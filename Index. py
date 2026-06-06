@@ -1,0 +1,34 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+# Sample weather data
+data = {
+    'Temperature': [30, 32, 35, 28, 25, 27, 31, 33],
+    'Humidity': [70, 65, 60, 80, 85, 75, 68, 62],
+    'WindSpeed': [10, 12, 8, 15, 18, 14, 11, 9],
+    'NextDayTemp': [32, 35, 36, 25, 27, 31, 33, 34]
+}
+df = pd.DataFrame(data)
+
+# Features and target
+X = df[['Temperature', 'Humidity', 'WindSpeed']]
+y = df['NextDayTemp']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Train model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict next day's temperature
+temp = float(input("Enter current temperature: "))
+humidity = float(input("Enter humidity: "))
+wind = float(input("Enter wind speed: "))
+
+prediction = model.predict([[temp, humidity, wind]])
+
+print("Predicted Next Day Temperature:", round(prediction[0], 2), "°C")
