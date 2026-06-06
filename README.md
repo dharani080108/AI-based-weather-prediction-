@@ -1,0 +1,1 @@
+"AI-Based Weather Prediction uses Machine Learning algorithms to analyze weather parameters such as temperature, humidity, and wind speed to predict future weather conditions. This helps improve forecasting accuracy and supports better planning and decision-making."
